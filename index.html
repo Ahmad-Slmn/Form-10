@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <form action="#">
+        <h1>registration form</h1>
+        <div class="progressbar">
+            <div id="progress"></div>
+            <div class="progress-step active" data-titel="intro"></div>
+            <div class="progress-step" data-titel="contect"></div>
+            <div class="progress-step" data-titel="id"></div>
+            <div class="progress-step" data-titel="password"></div>
+        </div>
+        <div class="form-step active">
+            <div class="input-group">
+                <label for="username">username</label>
+                <input type="text" name="username">
+            </div>
+            <div class="input-group">
+                <label for="position">position</label>
+                <input type="text" name="position">
+            </div>
+            <div class="input-group">
+                <a href="#" class="width-50 ml-auto next">next</a>
+            </div>
+        </div>
+
+        <div class="form-step">
+            <div class="input-group">
+                <label for="phone">phone</label>
+                <input type="tel" name="phone">
+            </div>
+            <div class="input-group">
+                <label for="email">email</label>
+                <input type="email" name="email">
+            </div>
+            <div class="button-group">
+                <a href="#" class="prev">previous</a>
+                <a href="#" class="next">next</a>
+            </div>
+        </div>
+
+        <div class="form-step">
+            <div class="input-group">
+                <label for="dob">date of birth</label>
+                <input type="date" name="date">
+            </div>
+            <div class="input-group">
+                <label for="id">national id</label>
+                <input type="number" name="number">
+            </div>
+            <div class="button-group">
+                <a href="#" class="prev">previous</a>
+                <a href="#" class="next">next</a>
+            </div>
+        </div>
+
+        <div class="form-step">
+            <div class="input-group">
+                <label for="pasword">pasword</label>
+                <input type="password" name="pasword">
+            </div>
+            <div class="input-group">
+                <label for="confirm password">confirm password</label>
+                <input type="password" name="confirmPassword" confirmPassword="confirmPassword">
+            </div>
+            <div class="button-group">
+                <a href="#" class="prev">previous</a>
+                <input type="submit" value="sbmit">
+            </div>
+        </div>
+    </form>
+    <script>
+        const formSteps = document.querySelectorAll(".form-step");
+        const prevBtns = document.querySelectorAll(".prev");
+        const nextBtns = document.querySelectorAll(".next");
+        const progressSteps = document.querySelectorAll(".progress-step");
+        const progress = document.getElementById("progress");
+        var formStepsNum = 0;
+
+        nextBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                formStepsNum++;
+                updateFormSteps();
+                updateProgressbar()
+            })
+        })
+
+        prevBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                formStepsNum--;
+                updateFormSteps();
+                updateProgressbar()
+            })
+        })
+
+        function updateFormSteps() {
+            formSteps.forEach(formStep => {
+                formStep.classList.contains("active") &&
+                    formStep.classList.remove("active")
+            })
+            formSteps[formStepsNum].classList.add("active")
+        }
+
+        function updateProgressbar() {
+            progressSteps.forEach((progressStep, index) => {
+
+                if (index < formStepsNum + 1) {
+                    progressStep.classList.add("active")
+                } else {
+                    progressStep.classList.remove("active")
+                }
+            })
+
+            const progressActive = document.querySelectorAll(".progress-step.active");
+
+            progress.style.width =
+                ((progressActive.length - 1) / (progressSteps.length - 1)) * 100 + "%";
+
+        }
+
+    </script>
+</body>
+
+</html>

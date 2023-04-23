@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-transform: capitalize
+}
+
+
+body {
+    font-family: arial;
+    display: grid;
+    place-items: center;
+    min-height: 100vh
+}
+
+form {
+    width: clamp(420px, 40%, 530px);
+    margin: 0 auto;
+    border: 2px solid #ccc;
+    border-radius: .35rem;
+    padding: 1.5rem
+}
+
+form h1 {
+    text-align: center
+}
+
+.progressbar {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    counter-reset: step;
+    margin: 2rem 0 4rem
+}
+
+.progressbar::before,
+.progressbar #progress {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 100%;
+    background-color: #dcdcdc;
+    z-index: -1
+}
+
+.progressbar #progress {
+    background-color: blue;
+    width: 0;
+    transition: .2s
+}
+
+.progressbar .progress-step {
+    width: 2.1875rem;
+    height: 2.1875rem;
+    background-color: #dcdcdc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.progressbar .progress-step.active {
+    background-color: blue;
+    color: #fff
+}
+
+.progressbar .progress-step::before {
+    counter-increment: step;
+    content: counter(step);
+}
+
+.progressbar .progress-step::after {
+    content: attr(data-titel);
+    position: absolute;
+    top: calc(100% + .75rem);
+    font-size: .85rem;
+    color: #666
+}
+
+form .form-step {
+    display: none;
+    animation: animate .5s;
+    transform-origin: top
+}
+
+
+form .form-step.active {
+    display: block
+}
+
+form .form-step .input-group {
+    margin: 2rem 0
+}
+
+@keyframes animate {
+    from {
+        transform: scale(1, 0);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1, 1);
+        opacity: 1;
+    }
+}
+
+form .form-step .input-group label {
+    display: block;
+    margin-bottom: .5rem
+}
+
+form .form-step .input-group input {
+    display: block;
+    width: 100%;
+    padding: .75rem;
+    border: 2px solid #ccc;
+    border-radius: .35rem;
+}
+
+form .form-step a,
+form .form-step input[type="submit"] {
+    text-decoration: none;
+    display: block;
+    background: blue;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    border-radius: .30rem;
+    padding: .75rem;
+    transition: .3s
+}
+
+form .form-step input[type="submit"] {
+    border: none
+}
+
+form .form-step .input-group a:hover {
+    box-shadow: 0 0 0 2px #fff, 0 0 0 3px blue
+}
+
+.width-50 {
+    width: 50%
+}
+
+.ml-auto {
+    margin-left: auto
+}
+
+form .button-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1.5rem
+}
