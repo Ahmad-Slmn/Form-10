@@ -14,7 +14,7 @@ body {
 }
 
 form {
-    width: clamp(420px, 40%, 530px);
+    width: 400px;
     margin: 0 auto;
     border: 2px solid #ccc;
     border-radius: .35rem;
