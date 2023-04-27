@@ -10,7 +10,61 @@ body {
     font-family: arial;
     display: grid;
     place-items: center;
-    min-height: 100vh
+    height: 100vh
+}
+
+.popup {
+    width: 350px;
+    background-color: #fff;
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 1;
+    padding: 0 30px 30px;
+    color: #333;
+    text-align: center;
+    transition: .4s, top .4s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    border: 2px solid #ccc;
+    
+}
+
+.open-Popup {
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1)
+}
+
+.popup img {
+    width: 100px;
+    margin-top: -50px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2)
+}
+
+.popup h2 {
+    font-size: 30px;
+    font-weight: 500;
+    margin: 30px 0 10px
+}
+
+.popup p {
+    line-height: 1.7
+}
+
+.popup button {
+    width: 100%;
+    margin-top: 50px;
+    padding: 10px 0;
+    background-color: #6fd649;
+    color: #fff;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer
 }
 
 form {

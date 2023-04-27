@@ -9,6 +9,12 @@
 </head>
 
 <body>
+    <div class="popup">
+        <img src="404-tick.png">
+        <h2>tank you!</h2>
+        <p>your details has been succesfully<br> submitted. tanks!</p>
+        <button onclick="closePopup()">ok</button>
+    </div>
     <form action="#">
         <h1>registration form</h1>
         <div class="progressbar">
@@ -73,7 +79,7 @@
             </div>
             <div class="button-group">
                 <a href="#" class="prev">previous</a>
-                <input type="submit" value="sbmit">
+                <input type="submit" value="submit" onclick="openPopup()">
             </div>
         </div>
     </form>
@@ -84,6 +90,14 @@
         const progressSteps = document.querySelectorAll(".progress-step");
         const progress = document.getElementById("progress");
         var formStepsNum = 0;
+
+        function openPopup() {
+            document.querySelector(".popup").classList.add("open-Popup")
+        }
+
+        function closePopup() {
+            document.querySelector(".popup").classList.remove("open-Popup")
+        }
 
         nextBtns.forEach(btn => {
             btn.addEventListener("click", () => {
